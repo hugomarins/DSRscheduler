@@ -30,7 +30,7 @@ interface CustomData {
 
 async function onActivate(plugin: ReactRNPlugin) {
   await plugin.scheduler.registerCustomScheduler(
-    "FSRS4RemNote",
+    "DSRscheduler",
     Object.values(defaultParameters)
   )
 
@@ -93,8 +93,8 @@ async function onActivate(plugin: ReactRNPlugin) {
       scheduleDays =
       convertedScore == Rating.Again ? 1 / 1440
       : convertedScore == Rating.Hard ? 5 / 1440
-      : convertedScore == Rating.Good ? 1 /* alterado!*/
-      : convertedScore == Rating.Easy ? 10 /* alterado!*/
+      : convertedScore == Rating.Good ? 1
+      : convertedScore == Rating.Easy ? 10
       : null!;
     } else if (customData.stage == Stage.Review) {
       const elapsedDays = (new Date(lastRep.date).getTime() - new Date(customData.lastReview).getTime()) / (1000 * 60 * 60 * 24)
