@@ -1,22 +1,23 @@
 {
   "manifestVersion": 1,
-  "id": "plugin_template",
-  "name": "Plugin Template",
-  "author": "remnote",
-  "repoUrl": "",
+  "id": "dsrscheduler",
+  "name": "DSRscheduler",
+  "author": "Hugo Marins",
+  "repoUrl": "https://github.com/hugomarins/DSRscheduler",
   "version": {
     "major": 0,
     "minor": 0,
     "patch": 1
   },
   "theme": [],
-  "enableOnMobile": false,
-  "description": "",
+  "enableOnMobile": true,
+  "description": "A slightly modified version of Free Spaced Repetition Scheduler algorithm scheduler plugin, based on (Difficulty, Stability, Retrievability) model.",
   "requestNative": false,
   "requiredScopes": [
     {
       "type": "All",
       "level": "Read"
     }
-  ]
+  ],
+  "unlisted": true,
 }
