@@ -8,17 +8,15 @@ The scheduler is based on a variant of the DSR  model, which is used to predict 
 
 # DSR Scheduler changes to standard FSRS4RemNote behavior
 
-The formulas for new stability after recall and new stability after forgetting have been reshaped, in order to ensure w8 and w12 really modulates the retrievability weight on the next stability. 
+The formulas for new stability after recall and new stability after forgetting have been reshaped, in order to ensure $w8$ and $w12$ really modulates the retrievability weight on the next stability. 
 
-Increasing w8 (coupled with decreasing w6) can ensure teh same behavior of stability increase for cards reviewed on due dates, but make the stability increase in case of recall less agressive for very overdued cards.
+Increasing $w8$ (coupled with decreasing $w6$) can ensure the same behavior of stability increase for cards reviewed on due dates, but make the stability increase in case of recall less agressive for very overdued cards.
 
 $S^\prime_r(D,S,R) = S\cdot(e^{w_6}\cdot (11-D)\cdot S^{w_7}\cdot(e^{(1-R^{w_8})}-1)+1)$
 
-In the same manner, the formula for the next forget stability has been adjusted:
-
 $S^\prime_f(D,S,R) = w_9\cdot D^{w_{10}}\cdot S^{w_{11}}\cdot e^{(1-R^{w_{12}})}$
 
-Also, new stability after rating "Hard" has been corrected to be the last stability * hard interval. This is to avoid the FSRS strange behavior of, after rating "Hard", on next review the proposed next interval in case of pressing "Hard" once more being too long, almost the same of that of pressing "Good".
+Also, new stability after rating "Hard" has been corrected to be the last stability * hard interval. This is to avoid the FSRS strange behavior of, after rating "Hard", on next review the proposed next interval in case of pressing "Hard" once more being too long, almost the same of that of pressing "Good". [Being tested yet]
 
 Other minor changes:
 - For new cards, learning steps were ajusted:
