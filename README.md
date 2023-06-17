@@ -121,7 +121,7 @@ Other minor changes:
 
         Remember that the natural exponential function $y=e^x$ behaves in the following manner:
         
-        ![](https://raw.githubusercontent.com/hugomarins/DSRscheduler/main/public/exp.png") 
+        ![](https://raw.githubusercontent.com/hugomarins/DSRscheduler/main/public/exp.png) 
 
     - $w7$ (always negative) is the factor for the "recall Stability decay", modulating the marginal effect on the memory consolidation decay:
 
