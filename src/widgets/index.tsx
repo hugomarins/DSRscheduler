@@ -92,7 +92,7 @@ async function onActivate(plugin: ReactRNPlugin) {
       newCustomData = init_states(convertedScore);
       scheduleDays =
       convertedScore == Rating.Again ? 1 / 1440
-      : convertedScore == Rating.Hard ? 5 / 1440
+      : convertedScore == Rating.Hard ? 10 / 1440
       : convertedScore == Rating.Good ? 1
       : convertedScore == Rating.Easy ? 10
       : null!;
