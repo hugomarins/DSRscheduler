@@ -91,7 +91,7 @@ Other minor changes:
             - and how much Difficulty will increase if rating is "Hard".
             - Difficulty will increase twice as much if rating is "Again".
     
-    - But the new Difficult will be set only after applying the mean reversion to avoid "ease hell", modulated by $w5$:
+    - But the new Difficult will be set only after applying the mean reversion to avoid "ease hell", modulated by $w5:$
 
         $w_5 \cdot D_0(3) + (1 - w_5) \cdot D^\prime$
 
