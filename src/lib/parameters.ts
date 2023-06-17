@@ -4,7 +4,7 @@ export const defaultParameters = {
   [SchedulerParam.Weights]: {
     id: SchedulerParam.Weights,
     title: SchedulerParam.Weights,
-    defaultValue: "0.05, 1, 5, -1, -1, 0.2, 0.3, -0.41, 8.8, 2, -0.2, 0.45, 1",
+    defaultValue: "1, 2.5, 5, -1, -1, 0.2, 0.25, -0.41, 9.3, 2, -0.2, 0.45, 1",
     description: "Default weights.",
     type: 'string' as const,
     validators: [
