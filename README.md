@@ -16,7 +16,7 @@ $S^\prime_r(D,S,R) = S\cdot(e^{w_6}\cdot (11-D)\cdot S^{w_7}\cdot(e^{(1-R^{w_8})
 
 $S^\prime_f(D,S,R) = w_9\cdot D^{w_{10}}\cdot S^{w_{11}}\cdot e^{(1-R^{w_{12}})}$
 
-Also, new stability after rating "Hard" has been corrected to be the last stability * hard interval. This is to avoid the FSRS strange behavior of, after rating "Hard", on next review the proposed next interval in case of pressing "Hard" once more being too long, almost the same of that of pressing "Good". [Being tested yet]
+Also, new stability after rating "Hard" has been corrected to be the `last stability * hard interval`. This is to avoid the FSRS strange behavior of, after rating "Hard", on next review the proposed next interval in case of pressing "Hard" once more being too long, almost the same of that of pressing "Good". [Being tested yet]
 
 Other minor changes:
 - For new cards, learning steps were adjusted:
