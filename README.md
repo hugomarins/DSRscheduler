@@ -12,9 +12,9 @@ The formulas for new stability after recall and new stability after forgetting h
 
 Increasing $w8$ (coupled with decreasing $w6$) can ensure the same behavior of stability increase for cards reviewed on due dates, but make the stability increase in case of recall less aggressive for very overdued cards.
 
-$S^\prime_r(D,S,R) = S\cdot(e^{w_6}\cdot (11-D)\cdot S^{w_7}\cdot(e^{(1-R^{w_8})}-1)+1)$
+$$S^\prime_r(D,S,R) = S\cdot(e^{w_6}\cdot (11-D)\cdot S^{w_7}\cdot(e^{(1-R^{w_8})}-1)+1)$$
 
-$S^\prime_f(D,S,R) = w_9\cdot D^{w_{10}}\cdot S^{w_{11}}\cdot e^{(1-R^{w_{12}})}$
+$$S^\prime_f(D,S,R) = w_9\cdot D^{w_{10}}\cdot S^{w_{11}}\cdot e^{(1-R^{w_{12}})}$$
 
 Also, new stability after rating "Hard" has been corrected to be the `last stability * hard interval`. This is to avoid the FSRS strange behavior of, after rating "Hard", on next review the proposed next interval in case of pressing "Hard" once more being too long, almost the same of that of pressing "Good". [Being tested yet]
 
@@ -31,7 +31,7 @@ Other minor changes:
 
     retrievability of $t$ days since the last review:
 
-    $R(t,S) = 0.9^{\frac{t}{S}}$
+    $$R(t,S) = 0.9^{\frac{t}{S}}$$
 
     where $R(t,S)=0.9$ when $t=S.$
 
@@ -54,7 +54,7 @@ Other minor changes:
 
 - $w1$ will set the initial Stability when the first rating is other than "Again", by the formula:
     
-    $S_0(G) = w_0 + (G-1) \cdot w_1$
+    $$S_0(G) = w_0 + (G-1) \cdot w_1$$
     
     where 
     $S_0$ is the initial Stability, and
@@ -64,7 +64,7 @@ Other minor changes:
 
 - $w3$ (always negative) modulates how much the Difficulty will be changed if first rating is not "Good", by the formula:
     
-    $D_0(G) = w_2 + (G-3) \cdot w_3$
+    $$D_0(G) = w_2 + (G-3) \cdot w_3$$
 
     where
     $D_0$ is the initial Difficulty, and
@@ -79,7 +79,7 @@ Other minor changes:
     
     - $w4$ (always negative) is similar to $w3$, but modulates how much the Difficulty will be changed after a review (instead of after the first rating), by the formula:
 
-        $D^\prime = D + w_4 \cdot (G - 3)$
+        $$D^\prime = D + w_4 \cdot (G - 3)$$
 
         where
         $D^\prime$ is the new Difficulty after review, 
@@ -93,7 +93,7 @@ Other minor changes:
     
     - But the new Difficult will be set only after applying the mean reversion to avoid "ease hell", modulated by $w5:$
 
-        $w_5 \cdot D_0(3) + (1 - w_5) \cdot D^\prime$
+        $$w_5 \cdot D_0(3) + (1 - w_5) \cdot D^\prime$$
 
         where
         $w_5$ is the mean reversion factor (to avoid "ease hell"),
@@ -104,7 +104,7 @@ Other minor changes:
     
     - So, the formula for the new Difficulty after review (as a function of current Difficulty before review and the Grade rated in the review) is:
 
-        $D^\prime(D,G) = w_5 \cdot D_0(3) +(1 - w_5) \cdot (D + w_4 \cdot (G - 3))$
+        $$D^\prime(D,G) = w_5 \cdot D_0(3) +(1 - w_5) \cdot (D + w_4 \cdot (G - 3))$$
 
         where
         $D^\prime$ is the new Difficulty after review,
@@ -117,7 +117,7 @@ Other minor changes:
 - The *new Stability after recall* is a function of Difficulty, current Stability and of the Retrievability, and is modulated by three weights:
     - $w6$ is the "recall factor", and increases exponentially the next Stability (that is, the next interval):
 
-        $S^\prime_r(D,S,R) = S\cdot(\boxed{e^{w_6}}\cdot (11-D)\cdot S^{w_7}\cdot(e^{(1-R^{w_8})}-1)+1)$
+        $$S^\prime_r(D,S,R) = S\cdot(\boxed{e^{w_6}}\cdot (11-D)\cdot S^{w_7}\cdot(e^{(1-R^{w_8})}-1)+1)$$
 
         Remember that the natural exponential function $y=e^x$ behaves in the following manner:
         
@@ -125,7 +125,7 @@ Other minor changes:
 
     - $w7$ (always negative) is the factor for the "recall Stability decay", modulating the marginal effect on the memory consolidation decay:
 
-        $S^\prime_r(D,S,R) = S\cdot(e^{w_6}\cdot (11-D)\cdot \boxed{S^{w_7}}\cdot(e^{(1-R^w_8)}-1)+1)$
+        $$S^\prime_r(D,S,R) = S\cdot(e^{w_6}\cdot (11-D)\cdot \boxed{S^{w_7}}\cdot(e^{(1-R^w_8)}-1)+1)$$
 
         The larger the $S,$ the less the $SInc$ (Stability increase factor; = Anki's factor), which means the marginal effect on memory consolidation. In other words, the Stability (intervals) increases faster when the intervals are still short, but reduces the speed of increasing as the memory gets stable and intervals larger (that is a point in which the curve "flattens").
 
@@ -139,11 +139,11 @@ Other minor changes:
     
     - $w8$ is the recall Retrievability factor, modulating the desirable difficulty:
 
-        $S^\prime_r(D,S,R) = S\cdot(e^{w_6}\cdot (11-D)\cdot S^{w_7}\cdot\boxed{(e^{(1-R^{w_8})}-1)}+1)$
+        $$S^\prime_r(D,S,R) = S\cdot(e^{w_6}\cdot (11-D)\cdot S^{w_7}\cdot\boxed{(e^{(1-R^{w_8})}-1)}+1)$$
 
         Retrievability is given by:
 
-        $R(t,S) = 0.9^{\frac{t}{S}}$
+        $$R(t,S) = 0.9^{\frac{t}{S}}$$
 
         considering $t$ days since last review.
 
@@ -187,7 +187,7 @@ Other minor changes:
     - $w11$ forget Stability decay, analogous to $w7$;
     - $w12$ forget Retrievability factor, analogous to $w8$.
 
-    $S^\prime_f(D,S,R) = w_9\cdot D^{w_{10}}\cdot S^{w_{11}}\cdot e^{(1-R^{w_{12}})}$
+    $$S^\prime_f(D,S,R) = w_9\cdot D^{w_{10}}\cdot S^{w_{11}}\cdot e^{(1-R^{w_{12}})}$$
 
     You can play the function in https://www.geogebra.org/calculator/rfjvmmpu.
 
