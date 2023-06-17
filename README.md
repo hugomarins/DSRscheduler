@@ -120,10 +120,8 @@ Other minor changes:
         $S^\prime_r(D,S,R) = S\cdot(\boxed{e^{w_6}}\cdot (11-D)\cdot S^{w_7}\cdot(e^{(1-R^{w_8})}-1)+1)$
 
         Remember that the natural exponential function $y=e^x$ behaves in the following manner:
-        <p align="center">
-        <img src="https://github.com/hugomarins/DSRscheduler/blob/main/public/Exp.svg" style="background-color:white;">
-        </p>
-
+        
+        ![](https://raw.githubusercontent.com/hugomarins/DSRscheduler/main/public/exp.png") 
 
     - $w7$ (always negative) is the factor for the "recall Stability decay", modulating the marginal effect on the memory consolidation decay:
 
@@ -134,7 +132,8 @@ Other minor changes:
         The more negative $w7$ is, the less the intervals of very mature cards will increase.
         
         Here you can see the effect of $w7$: (https://www.geogebra.org/calculator/kyqjdspc)
-        <img src="https://github.com/hugomarins/DSRscheduler/blob/main/public/w7.png"/>
+
+        ![](https://raw.githubusercontent.com/hugomarins/DSRscheduler/main/public/w7.png)
 
         This sets a great advantage of FSRS & DSR Scheduler over standard Anki-SM2, to which this multiplication factor is almost constant, making intervals extremely large for very mature cards, increasing the chances of forgetting, as they do not consider the decay in memory consolidation!
     
@@ -158,7 +157,7 @@ Other minor changes:
 
         Looking at the formula, we can see that the larger the Retrievability, the power of "e" approaches zero, and as can be seen in the graph of the exponential function $y=e^x$ above, $e^0 = 1$, and the $w8$ term as a whole would be zero (that is, there would be no Stability increase if I review the card again in the same day I have already reviewed). But as the Retrievability decreases, the power of "e" approaches 1 and the term increases:
 
-        <img src="https://github.com/hugomarins/DSRscheduler/blob/main/public/w8_term.png"/>
+        ![](https://raw.githubusercontent.com/hugomarins/DSRscheduler/main/public/w8_term.png)
 
         $w8$ therefore modulates this effect of Retrievability on next Stability (by which rate reviewing after or before the due date will increase / decrease next Stability, respectively). 
 
@@ -169,7 +168,7 @@ Other minor changes:
         - In standard setting of FSRS, the overdue bonus for this same situation would be much larger (greater than 8). And if I had reviewed that same card (10 days of Stability) only after one year, the overdue bonus would be grater than 14!
         - As I don't believe we can suppose that memory is that stable without a consistent review history, I made these changes in DSR Scheduler, to give a bonus for overdueness, but limit it to reasonable figures.
 
-        <img src="https://github.com/hugomarins/DSRscheduler/blob/main/public/overdue_bonus.png"/>
+        ![](https://raw.githubusercontent.com/hugomarins/DSRscheduler/main/public/overdue_bonus.png)
 
 - The *new Stability after FORGET* is similarly a function of Difficulty, current Stability and of the Retrievability, and is modulated by the last four weights:
 
@@ -198,7 +197,7 @@ Other minor changes:
 
 Considering the case of always rating "Good" (Difficulty = 5), these default parameters would be compared with Anki ease factor (multiplication factor by which the current interval will be increase) as show below:
 
-<img src="https://github.com/hugomarins/DSRscheduler/blob/main/public/anki_factor_comparison.png"/>
+![](https://raw.githubusercontent.com/hugomarins/DSRscheduler/main/public/anki_factor_comparison.png)
 
 Where the graph shows the factor on a basis of current Stability.
 
