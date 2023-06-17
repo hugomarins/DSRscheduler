@@ -192,6 +192,21 @@ Other minor changes:
 
     You can play the function in https://www.geogebra.org/calculator/rfjvmmpu.
 
+# Default parameters & Comparison DSR Scheduler x Anki
+
+*Default parameters*: [1, 2.5, 5, -1, -1, 0.2, 0.25, -0.41, 9.3, 2, -0.2, 0.45, 1]
+
+Considering the case of always rating "Good" (Difficulty = 5), these default parameters would be compared with Anki ease factor (multiplication factor by which the current interval will be increase) as show below:
+
+<img src="https://github.com/hugomarins/DSRscheduler/blob/main/public/anki_factor_comparison.png"/>
+
+Where the graph shows the factor on a basis of current Stability.
+
+The graph shows that this scheduler allows for the Stabilization decay, what is impossible to Anki (that always multiply the previous interval by the same ease factor).
+
+Yet, you can have much larger intervals in the beginning (young cards), spending less time with reviews that you don't need.
+
+You can play with other settings here https://www.geogebra.org/calculator/qdgnh2ab.
 
 ## Usage
 
