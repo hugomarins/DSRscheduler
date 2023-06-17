@@ -71,13 +71,13 @@ Other minor changes:
     $G$ is the already mentioned "Grade" (1 - Again; 2 - Hard; 3 - Good; 4 - Easy).
 
     So, it modulates:
-        - how much Difficulty will decrease if rating is "Easy";
-        - and how much Difficulty will increase if rating is "Hard".
-        - Difficulty will increase twice as much if rating is "Again".
+    - how much Difficulty will decrease if rating is "Easy";
+    - and how much Difficulty will increase if rating is "Hard".
+    - Difficulty will increase twice as much if rating is "Again".
 
 - The *new Difficulty after review* is modulated by two weights: 
     
-    $w4$ (always negative) is similar to $w3$, but modulates how much the Difficulty will be changed after a review (instead of after the first rating), by the formula:
+    - $w4$ (always negative) is similar to $w3$, but modulates how much the Difficulty will be changed after a review (instead of after the first rating), by the formula:
 
         $D^\prime = D + w_4 \cdot (G - 3)$
 
@@ -91,7 +91,7 @@ Other minor changes:
             - and how much Difficulty will increase if rating is "Hard".
             - Difficulty will increase twice as much if rating is "Again".
     
-    But the new Difficult will be set only after applying the mean reversion to avoid "ease hell", modulated by $w5$:
+    - But the new Difficult will be set only after applying the mean reversion to avoid "ease hell", modulated by $w5$:
 
         $w_5 \cdot D_0(3) + (1 - w_5) \cdot D^\prime$
 
@@ -102,7 +102,7 @@ Other minor changes:
 
         The $w5$ default value of "0.1" means that only 90% of $D^\prime$ will vary with the ratings, and that the remaining 10% will not, tending approach again the standard Difficulty (set in $w2$) asymptotically.
     
-    So, the formula for the new Difficulty after review (as a function of current Difficulty before review and the Grade rated in the review) is:
+    - So, the formula for the new Difficulty after review (as a function of current Difficulty before review and the Grade rated in the review) is:
 
         $D^\prime(D,G) = w_5 \cdot D_0(3) +(1 - w_5) \cdot (D + w_4 \cdot (G - 3))$
 
@@ -121,7 +121,7 @@ Other minor changes:
 
         Remember that the natural exponential function $y=e^x$ behaves in the following manner:
         <p align="center">
-        <img src="https://en.wikipedia.org/wiki/File:Exp.svg">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Exp.svg">
         </p>
 
 
@@ -134,7 +134,7 @@ Other minor changes:
         The more negative $w7$ is, the less the intervals of very mature cards will increase.
         
         Here you can see the effect of $w7$: (https://www.geogebra.org/calculator/kyqjdspc)
-        <img src={`${plugin.rootURL}w7.png\`}/>
+        <img src="https://github.com/hugomarins/DSRscheduler/blob/main/public/w7.png"/>
 
         This sets a great advantage of FSRS & DSR Scheduler over standard Anki-SM2, to which this multiplication factor is almost constant, making intervals extremely large for very mature cards, increasing the chances of forgetting, as they do not consider the decay in memory consolidation!
     
@@ -144,35 +144,32 @@ Other minor changes:
 
         Retrievability is given by:
 
-            $R(t,S) = 0.9^{\frac{t}{S}}$
+        $R(t,S) = 0.9^{\frac{t}{S}}$
 
-            considering $t$ days since last review.
+        considering $t$ days since last review.
 
-            So, $R(t,S)=0.9$ when $t=S$, that is, when the card is reviewed is its due date. But Retrievability:
-                - Decreases if the card is overdued (reviewed later than scheduled)
-                    0,82 if $t$ days elapsed are double the scheduled Stability.
-                - Increases if the card is reviewed before the due date.
-                    0,95 $t$ days elapsed are half the scheduled Stability.
+        So, $R(t,S)=0.9$ when $t=S$, that is, when the card is reviewed is its due date. But Retrievability:
+        - Decreases if the card is overdued (reviewed later than scheduled)
+            0,82 if $t$ days elapsed are double the scheduled Stability.
+        - Increases if the card is reviewed before the due date.
+            0,95 $t$ days elapsed are half the scheduled Stability.
         
         The less the Retrievability $R,$ the larger the $SInc$ (Stability increase factor; = Anki's factor), which means the desirable difficulty. In other words, if I recalled even when it was not that probable anymore (an overdued card), I can suppose the memory is more stable than initially anticipated. So, the Stability increase can be larger.
 
         Looking at the formula, we can see that the larger the Retrievability, the power of "e" approaches zero, and as can be seen in the graph of the exponential function $y=e^x$ above, $e^0 = 1$, and the $w8$ term as a whole would be zero (that is, there would be no Stability increase if I review the card again in the same day I have already reviewed). But as the Retrievability decreases, the power of "e" approaches 1 and the term increases:
 
-        <img src={`${plugin.rootURL}w8_term.png\`}/>
+        <img src="https://github.com/hugomarins/DSRscheduler/blob/main/public/w8_term.png"/>
 
         $w8$ therefore modulates this effect of Retrievability on next Stability (by which rate reviewing after or before the due date will increase / decrease next Stability, respectively). 
 
         You can see the effect of changing $w8$ (and compare with the effect of doing this in FSRS) in https://www.geogebra.org/calculator/kbqchnep. The graph is on a bases of "overdueness", in which 1 means that $t=S$, 2 that $t=2S$ (the real interval was twice the scheduled interval), and so on.
 
         By increasing $w8$, you can limit the increase of Stability in case of very overdued cards (it must be done together with decreasing $w6$).
+        - Using a $w8$ of 9.3, the overdue bonus (that is, how much the next Stability will be increased because I reviewed late and yet recalled) will never be grater than 2. So, if I had a card with stability of 10 days, and reviewed it only after 100 days, the next Stability will be only twice as large as that if I had reviewed on scheduled date.
+        - In standard setting of FSRS, the overdue bonus for this same situation would be much larger (greater than 8). And if I had reviewed that same card (10 days of Stability) only after one year, the overdue bonus would be grater than 14!
+        - As I don't believe we can suppose that memory is that stable without a consistent review history, I made these changes in DSR Scheduler, to give a bonus for overdueness, but limit it to reasonable figures.
 
-            - Using a $w8$ of 9.3, the overdue bonus (that is, how much the next Stability will be increased because I reviewed late and yet recalled) will never be grater than 2. So, if I had a card with stability of 10 days, and reviewed it only after 100 days, the next Stability will be only twice as large as that if I had reviewed on scheduled date.
-
-            - In standard setting of FSRS, the overdue bonus for this same situation would be much larger (greater than 8). And if I had reviewed that same card (10 days of Stability) only after one year, the overdue bonus would be grater than 14!
-
-            - As I don't believe we can suppose that memory is that stable without a consistent review history, I made these changes in DSR Scheduler, to give a bonus for overdueness, but limit it to reasonable figures.
-
-            <img src={`${plugin.rootURL}overdue_bonus.png\`}/>
+        <img src="https://github.com/hugomarins/DSRscheduler/blob/main/public/overdue_bonus.png"/>
 
 - The *new Stability after FORGET* is similarly a function of Difficulty, current Stability and of the Retrievability, and is modulated by the last four weights:
 
