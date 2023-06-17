@@ -121,7 +121,7 @@ Other minor changes:
 
         Remember that the natural exponential function $y=e^x$ behaves in the following manner:
         <p align="center">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Exp.svg">
+        <img src="https://github.com/hugomarins/DSRscheduler/blob/main/public/Exp.svg">
         </p>
 
 
