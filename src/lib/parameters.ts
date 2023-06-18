@@ -5,7 +5,7 @@ export const defaultParameters = {
     id: SchedulerParam.Weights,
     title: SchedulerParam.Weights,
     defaultValue: "1, 2.5, 5, -1, -1, 0.2, 0.25, -0.41, 9.3, 2, -0.2, 0.45, 1",
-    description: "Default weights.",
+    description: "Set the weights that would allow the desired behavior (as you can antecipate in [Geogebra](https://www.geogebra.org/calculator/qdgnh2ab)). Weights meanings explained in READ ME.",
     type: 'string' as const,
     validators: [
       {

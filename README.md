@@ -35,7 +35,7 @@ Other minor changes:
 
     where $R(t,S)=0.9$ when $t=S.$
 
-- *Stability* is the storage strength of memory (interval when R=90%). The higher it is, the slower it is forgotten. Its analugous to the concept of ideal next interval in Anki.
+- *Stability* is the storage strength of memory (interval when R=90%). The higher it is, the slower it is forgotten. Its analogous to the concept of ideal next interval in Anki.
 
     - *Memory stabilization*: increase in memory Stability as a result of the retrieval of a memory (e.g. in review). (abbreviated SInc for stability increase in SuperMemo)
 
@@ -191,9 +191,20 @@ Other minor changes:
 
     You can play the function in https://www.geogebra.org/calculator/rfjvmmpu.
 
-# Default parameters & Comparison DSR Scheduler x Anki
+# Default parameters & Comparison DSR Scheduler x Anki 
 
-*Default parameters*: [1, 2.5, 5, -1, -1, 0.2, 0.25, -0.41, 9.3, 2, -0.2, 0.45, 1]
+*Default parameters*: [`1, 2.5, 5, -1, -1, 0.2, 0.25, -0.41, 9.3, 2, -0.2, 0.45, 1`]
+
+Caveat: Unlike FSRS suggested parameters, that were preceded of extensive study, primarily with language learners databases, and that focus on achieving the desired retrievability, the default parameters suggested above are focused in giving a desired behavior of intervals that meet my needs in studying specific educational material, tested only in myself, and that I suppose can be extrapolated to normal educational material (but not for learning vocabulary of foreign languages). The focus is to give higher intervals (than in Anki behavior) when the card is yet young, but after the card being very mature, avoid too large intervals, allowing for the stabilization decay explained in the Concepts section above.
+
+The intervals if always rating "Good" for the first 10 repetitions (including learning steps) is shown below. Those from the first 10 repetitions of default settings for Anki and for FSRS are also shown for comparison:
+
+DSR Scheduler's intervals: `1d, 6d, 25d, 2.3m, 5.1m, 9.4m, 1.3y, 2y, 2.9y, 4y` (10 repetitions covering 11.5 years)
+
+Anki's intervals: `10min, 1d, 3d, 8d, 20d, 1.7m, 4.2m, 10.4m, 2.1y, 5.4y` (10 repetitions covering 8.9 years)
+
+FSRS's intervals: `10min, 3d, 8d, 21d, 1.7m, 3.8m, 8.2m, 1.4y, 2.7y, 5.1y` (10 repetitions covering 10.4 years)
+
 
 Considering the case of always rating "Good" (Difficulty = 5), these default parameters would be compared with Anki ease factor (multiplication factor by which the current interval will be increase) as show below:
 
